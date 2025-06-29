@@ -1,0 +1,747 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-main: #371777;
+    --sec-color: #000000;
+    --main-transition: 0.3s;
+    --main-padding: 60px;
+    --bg-color: #121212;
+    --text-color: #eeeeee;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Global Section Spacing */
+
+section {
+    padding: 60px 0;
+    margin-bottom: 60px;
+}
+
+/* Main Title */
+
+.main-title {
+    text-align: center;
+    margin: 0 auto 60px;
+    font-size: 60px;
+    color: white;
+    position: relative;
+    background-color: var(--color-main);
+    width: fit-content;
+    box-shadow: 1px 0 1px var(--sec-color);
+    padding: 10px;
+    border-radius: 1px;
+    transition: 0.3s ease 0.3s;
+    z-index: 1;
+}
+
+.main-title:hover {
+    background-color: white;
+    color: var(--color-main);
+}
+
+.main-title::after,
+.main-title::before {
+    content: "";
+    position: absolute;
+    background-color: var(--sec-color);
+    display: block;
+    top: 0%;
+    width: 10px;
+    height: 0%;
+    transition: height 0.3s linear;
+}
+
+.main-title::before {
+    left: -10px;
+}
+
+.main-title::after {
+    right: -10px;
+}
+
+.main-title:hover::before,
+.main-title:hover::after {
+    height: 100%;
+}
+
+/* ?Start Style Switcher */
+
+/*? End Components */
+
+/* Header */
+
+header {
+    box-shadow: 0 0 10px var(--sec-color);
+    height: 100px;
+    position: sticky;
+    top: 0;
+    z-index: 111;
+    background-color: #ececec;
+    color: white;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .container .logo {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+header .container .logo>img {
+    width: 100px;
+    transition: var(--main-transition) linear;
+    filter: blur(1px) opacity(0.9);
+    border-radius: 50%;
+}
+
+header .container .logo>img:hover {
+    transform: scale(1.1) rotate(10deg);
+    filter: unset;
+}
+
+.my-input,
+.my-label {
+    display: none;
+}
+
+header .container>ul {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: var(--main-transition);
+}
+
+header .container ul li {
+    padding: 10px;
+    position: relative;
+    border-radius: 6px;
+}
+
+header .container ul li::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 4px;
+    background-color: var(--color-main);
+    top: -10px;
+    left: 0;
+    transition: var(--main-transition) linear;
+}
+
+header .container ul li:hover::before {
+    width: 100%;
+    background-color: var(--sec-color);
+}
+
+header .container ul li:hover {
+    background-color: #eee;
+}
+
+header .container ul li a {
+    color: var(--sec-color);
+    transition: var(--main-transition) linear;
+}
+
+header .container ul li a:hover {
+    color: var(--color-main);
+}
+
+/* Landing */
+
+.landing {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--sec-color);
+    transition: 1s;
+    padding: 0;
+    margin-bottom: 60px;
+}
+
+.my-star {
+    animation: move 20s linear infinite alternate;
+}
+
+.my-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-variant: small-caps;
+    font-style: italic;
+    font-weight: 900;
+    overflow: hidden;
+}
+
+.my-text h1 {
+    position: relative;
+    display: inline-block;
+    color: white;
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 10px var(--color-main);
+}
+
+.my-text h1::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    color: var(--color-main);
+    transition: left 0.5s ease, opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.my-text h1:hover::before {
+    left: 0;
+    opacity: 1;
+}
+
+.icon {
+    width: 20px;
+    height: 40px;
+    background: var(--color-main);
+    border: 1px solid var(--color-main);
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    transition: var(--main-transition);
+}
+
+.icon:hover {
+    border-color: #eee;
+}
+
+.icon>a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: circle 2s linear alternate infinite;
+}
+
+/* About */
+
+.about .about-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.about .about-content .text {
+    flex: 2;
+}
+
+.about .about-content .text p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 2;
+}
+
+.about .about-content .text>p:not(:last-child) {
+    border-bottom: 1px solid var(--color-main);
+}
+
+.about .about-content .text p::first-line {
+    font-weight: bold;
+    font-style: italic;
+    font-variant: small-caps;
+}
+
+.my-image {
+    position: relative;
+    overflow: hidden;
+    animation: waveShape 6s infinite ease-in-out;
+    z-index: 1;
+    transform-origin: center;
+    flex: 1;
+}
+
+.my-image img {
+    object-fit: cover;
+    animation: rotateSlow 12s linear infinite;
+    z-index: 2;
+    position: relative;
+}
+
+.my-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient( circle at top left, var(--color-main) transparent);
+    animation: glowMove 5s ease-in-out infinite alternate;
+    opacity: 0.3;
+    z-index: 0;
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+/* Projects */
+
+.Projects .container .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    position: relative;
+}
+
+.Projects .container .content .work {
+    padding: 10px;
+    text-align: center;
+    height: 450px;
+    box-shadow: 0 0 10px #e6e6e6e6;
+    transition: 0.3s linear;
+    border: 1px solid black;
+    border-radius: 10px;
+    position: relative;
+    background-color: white;
+}
+
+.Projects .container .content .work::before {
+    content: "";
+    background-color: var(--color-main);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 0%;
+    height: 4px;
+    transition: 1s;
+}
+
+.Projects .container .content .work:hover::before {
+    width: 100%;
+}
+
+.Projects .container .content .work::after {
+    content: "";
+    width: 1%;
+    height: 0%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--color-main);
+    z-index: -1;
+    transition: 1s;
+}
+
+.Projects .container .content .work:hover::after {
+    height: 100%;
+}
+
+.Projects .container .content .work:hover {
+    transform: translateY(-10px) scale(0.7) rotate(3deg);
+    border-color: var(--color-main);
+    border-radius: unset;
+}
+
+.Projects .container .content .work p {
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.Projects .container .content .work .link {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Utility */
+
+.rotate-on-mouse {
+    transition: transform 0.2s ease;
+    will-change: transform;
+    transform-style: preserve-3d;
+}
+
+/* *************************************** */
+
+.my-skills {
+    background-color: #f9f9f9;
+}
+
+.my-skills .container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.my-skills .container .skill,
+.my-skills .container .skill .services {
+    flex: 1;
+}
+
+.skill h4,
+.services h4 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--color-main);
+    text-align: center;
+}
+
+.box {
+    margin-bottom: 15px;
+}
+
+.my-skills .container .box h3 {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.my-skills .container .box span {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.prog-holder {
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.prog-holder span {
+    display: block;
+    height: 100%;
+    background-color: var(--color-main);
+    border-radius: 5px;
+}
+
+.my-skills .container .services .services-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.my-skills .container .services .services-boxes .service {
+    flex: 1;
+    display: flex;
+    background-color: #ececec;
+    transition: var(--main-transition);
+    position: relative;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1;
+    transition: var(--main-transition);
+}
+
+.my-skills .container .services .services-boxes .service:hover {
+    color: white;
+}
+
+.my-skills .container .services .services-boxes .service::before,
+.my-skills .container .services .services-boxes .service::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 0%;
+    z-index: -1;
+    transition: var(--main-transition);
+    background: var(--color-main);
+}
+
+.my-skills .container .services .services-boxes .service::before {
+    width: 50%;
+    left: 0;
+    height: 0%;
+}
+
+.my-skills .container .services .services-boxes .service:hover::before {
+    height: 100%;
+}
+
+.my-skills .container .services .services-boxes .service::after {
+    right: 0;
+    height: 100%;
+}
+
+.my-skills .container .services .services-boxes .service:hover::after {
+    width: 50%;
+}
+
+.my-skills .container .services .services-boxes .service i {
+    color: var(--color-main);
+    margin-right: 10px;
+    transition: var(--main-transition);
+}
+
+.my-skills .container .services .services-boxes .service:hover i {
+    color: white;
+}
+
+.my-skills .container .services .services-boxes .service h3 {
+    font-size: 25px;
+}
+
+.my-skills .container .services .services-boxes .service p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* ????????????????????????? finish Services skills */
+
+/* Contact me  */
+
+.contact {
+    background-color: rgb(55 23 119 / 3%);
+}
+
+.contact .container {}
+
+.contact .container .my-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.contact .container .my-content form,
+.contact .container .my-content .my-con {
+    flex: 1;
+}
+
+.contact .container .my-content form input {
+    width: 100%;
+    height: 100%;
+    margin: 10px 0;
+    display: block;
+    padding: 10px;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    display: block;
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    outline: none;
+}
+
+button {
+    display: block;
+    padding: 10px 15px;
+    margin: 2px 0;
+    outline: none;
+    background-color: var(--color-main);
+    color: white;
+    transition: background-color 1s, opacity 1s, padding-left 1s, margin-left 1s;
+    opacity: 0.5;
+}
+
+button:hover {
+    background-color: var(--sec-color);
+    opacity: 1;
+    padding-left: 25px;
+    /* needs to be more than 15px to show change */
+    margin-left: 15px;
+}
+
+.contact .container .my-con span {
+    display: block;
+    font-size: 23px;
+    color: var(--color-main);
+    font-weight: bold;
+}
+
+.contact .container .my-con>a {
+    font-size: 30px;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0;
+    background-color: #371777;
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: var(--main-transition);
+    color: white;
+}
+
+.contact .container .my-con>a:hover {
+    background-color: var(--sec-color);
+    color: white;
+}
+
+.contact .container .my-con .social>a {
+    font-size: 30px;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0;
+    background-color: #371777;
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: var(--main-transition);
+    color: white;
+}
+
+footer {
+    background-color: var(--color-main);
+    padding: 60px 0;
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    font-size: 50px;
+    font-style: italic;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+footer p span {
+    color: var(--sec-color);
+    font-size: 60px;
+}
+
+@media (max-width: 767px) {
+    footer p {
+        font-size: 20px;
+        font-style: italic;
+        font-variant: small-caps;
+        font-weight: bold;
+    }
+    footer p span {
+        font-size: 22px;
+    }
+}
+
+/* ENd contact me  */
+
+/* Animations */
+
+@keyframes waveShape {
+    0% {
+        clip-path: polygon( 0% 20%, 20% 25%, 40% 20%, 60% 25%, 80% 20%, 100% 25%, 100% 75%, 80% 80%, 60% 75%, 40% 80%, 20% 75%, 0% 80%);
+    }
+    50% {
+        clip-path: polygon( 0% 25%, 20% 20%, 40% 25%, 60% 20%, 80% 25%, 100% 20%, 100% 70%, 80% 75%, 60% 70%, 40% 75%, 20% 70%, 0% 75%);
+    }
+    100% {
+        clip-path: polygon( 0% 20%, 20% 25%, 40% 20%, 60% 25%, 80% 20%, 100% 25%, 100% 75%, 80% 80%, 60% 75%, 40% 80%, 20% 75%, 0% 80%);
+    }
+}
+
+@keyframes rotateSlow {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(1deg) scale(1.02);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+@keyframes glowMove {
+    0% {
+        background-position: top left;
+        opacity: 0.2;
+    }
+    100% {
+        background-position: bottom right;
+        opacity: 0.4;
+    }
+}
+
+@keyframes circle {
+    0%,
+    100% {
+        transform: translate(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes move {
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1) rotate(0) rotate(-10deg) translateX(-10px) skewX(10deg);
+    }
+    20% {
+        background-image: url("../images/stars1.png");
+        background-position: center center;
+        background-size: cover;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(2) rotate(3deg) translateX(0px) skew(-10deg);
+    }
+}
